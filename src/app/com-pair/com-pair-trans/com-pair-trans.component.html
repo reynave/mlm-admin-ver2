@@ -1,0 +1,64 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<app-header></app-header>
+
+<div class="bg-light border-bottom shadow-sm mb-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 py-1">
+                <a href="javascript:;" (click)="back();">Back</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid mt-4">
+    <div class="row">
+
+        <div class="col-12">
+               
+            <div>ID : {{user.id}}</div>
+            <div>User : {{user.name}}</div>
+        </div>
+
+        <div class="col-12 my-2">
+
+
+            <table id="dataTables" class="display excel border" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>ID</th>
+                        <th>Date & Time</th>
+                        <th>Sponsor</th>
+                        <th style="text-align: right;">LEFT BV </th>
+                        <th style="text-align: right;">RIGHT BV </th>
+                        <th>TRANSACTION CODE</th>
+                        <th>EXPIRED</th>
+                        <th>DEPTH</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of items; let i = index" class="{{x.sponsor == 'PAIRING' ? 'text-primary font-weight-bold':''}}">
+                        <td>{{i+1}}</td>
+                        <td><code>{{x.id}}</code></td>
+                        <td> {{x.input_date}}</td>
+                        <td>{{x.sponsor}}</td>
+                        <td style="text-align: right;">{{x.leftBv | number}}</td>
+                        <td style="text-align: right;">{{x.rightBv | number}}</td>
+                        <td>
+                            <code>{{x.transactionCode}}</code>
+                        </td>
+                        <td> {{x.expiredDate}}</td>
+                        <td> {{x.level}}</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</div>

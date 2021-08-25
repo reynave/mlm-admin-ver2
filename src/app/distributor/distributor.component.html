@@ -1,0 +1,71 @@
+<app-header></app-header>
+
+<div class="container-fluid mt-3">
+
+    <div class="row">
+        <div class="col-12 col-sm-7">
+            <input id="filter" [(ngModel)]="search" #filter class="form-control border-bottom rounded-0" (keyup)="tree.treeModel.filterNodes(filter.value)" placeholder="Search by name" />
+
+            <a href="javascript:;" (click)="tree.treeModel.clearFilter(); search = ''" class="px-2">
+                <small>Clear Filter</small>
+            </a>
+
+            <a href="javascript:;" [hidden]="expandAll" (click)="tree.treeModel.expandAll() ; expandAll = true" class="px-2">
+                <small>Expand Tree</small>
+            </a>
+
+            <a href="javascript:;" [hidden]="!expandAll" (click)="tree.treeModel.collapseAll() ; expandAll = false" class="px-2">
+                <small>Collapse Tree</small>
+            </a>
+
+
+            <tree-root [nodes]="nodes" #tree (activate)="onEvent($event)" [options]="options">
+                <ng-template #treeNodeTemplate let-node let-index="index">
+                    <span> <strong> {{ node.data.name }}</strong>  <small class="text-uppercase mx-1">({{node.data.level}})</small></span>
+                    <div class="lh-1"><small>ID : {{ node.data.id }}</small></div>
+                </ng-template>
+                <!-- https://angular2-tree.readme.io/docs/templates -->
+            </tree-root>
+
+
+        </div>
+        <div class="col-12 col-sm-5">
+            <div class="border rounded shadow-sm p-3 alert-warning ">
+                <div [hidden]="!smallLoading">
+                    Loading
+                </div>
+
+
+                <div [hidden]="user.length == 0">
+                   
+                    <table class="table-sm table">
+                        <tr>
+                            <td>ID </td>
+                            <td>{{user.id}}</td>
+                        </tr>
+                        <tr>
+                            <td>Name </td>
+                            <td>{{user.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email </td>
+                            <td>{{user.email}}</td>
+                        </tr>
+                        <tr>
+                            <td>Level </td>
+                            <td>{{user.level}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td> <a [routerLink]="[ '/user', user.id ]">Detail</a>
+                            </td>
+                        </tr>
+                    </table>
+ 
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

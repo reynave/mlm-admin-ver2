@@ -1,0 +1,62 @@
+<app-header></app-header>
+<!-- <div class="bg-light border-bottom shadow-sm mb-3">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12 py-1">
+                <a href="javascript:;" class="mr-3"><b>New Transaction</b></a>
+
+                <a href="javascript:;" class="mr-3" [routerLink]="[ '/transaction/history' ]">History</a>
+
+                <a href="javascript:;" class="mr-3" [routerLink]="[ '/transaction/draft' ]">Draft</a>
+            </div>
+
+        </div>
+    </div>
+</div> -->
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mb-3">
+            <h1 class="display-6">Invoice</h1>
+        </div>
+
+        <div class="col-12">
+
+
+            <table id="ha" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Date</th>  
+                        <th>Name</th>
+                        <th>Invoice No</th>
+                        <th title="Transaction Code">Trans.Code</th> 
+                        <th style="text-align: right;">Total</th>  
+                        <th>Type</th>
+                        <th>Rebate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of items" >
+                        <td (click)="onDetail(x);">{{x.input_date | date:'medium'}}</td> 
+                        <td (click)="onDetail(x);">{{x.user}}</td>
+                        <td (click)="onDetail(x);"><code>{{x.invoiceNo}}</code></td>
+                        <td (click)="onDetail(x);"><code>{{x.transactionCode}}</code></td> 
+                        <td (click)="onDetail(x);" style="text-align: right;">Rp {{x.total | number}}</td> 
+
+                        
+                        <td (click)="onDetail(x);"><small>{{x.topup == '1' ? 'Top Up':'Investor'}}</small></td>
+                     
+                        <td> 
+                        <a href="javascript:;" [hidden]="x.rebate == '1' "  (click)="extract(x);" class="btn btn-sm btn-warning py-0 text-white"><small>Rebate Now</small></a>    
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</div>

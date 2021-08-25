@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="display-6 my-3">Account Trading</h1>
+        </div>
+
+        <div class="col-12">
+            
+            
+            <table id="example" class="display excel " style="width:100%">  
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>ID</th>
+                        <th>Name</th> 
+                        <th>Email</th> 
+                        <th>Phone</th> 
+                        
+                         
+                        <th>Account</th> 
+                        <th>Password</th>   
+                        <th>Server</th>   
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of items; let i = index">
+                        <td>{{i+1}}</td> 
+                        <td><code>{{x.id}}</code></td> 
+                        <td>{{x.name}}</td>
+                        <td>{{x.email}}</td> 
+                        <td>{{x.phone}}</td> 
+                         
+                        <td>{{x.account}}</td>
+                        <td>{{x.password}}</td>
+                        <td>{{x.server}}</td>
+   
+                        
+                    </tr>
+                    
+                </tbody>
+                
+            </table>
+ 
+        </div>
+    </div>
+</div>

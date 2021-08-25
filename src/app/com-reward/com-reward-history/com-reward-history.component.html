@@ -1,0 +1,59 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+    <div class="row my-3">
+        <div class="col-4 mb-2">
+            <h1 class="display-6 ">Rewards in 1 Period  </h1> 
+        </div>
+
+        <div class="col-3 mb-2 text-right"> 
+           <select class="form-control form-control-sm" (change)="update();" [(ngModel)]="selectDate">
+               <option *ngFor="let x of selectPeriod" [value]="x.reward_end">{{x.reward_start | date}} -  {{x.reward_end  | date}}</option>
+           </select>
+        </div>
+       
+        
+
+        <div class="col-12">
+       
+            <table id="example" class="display excel border" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>ID</th>
+                        <th>Name</th> 
+                        <th>level</th> 
+
+                        <th  class="text-right">Left Bv</th> 
+                        <th  class="text-right">Right Bv</th>
+
+                        <th  class="text-right">Total Pairs</th> 
+                        <th>Reward</th> 
+                        <th>Prize</th> 
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of items; let i = index">
+                        <td>{{i+1}}</td>
+                        <td><code>{{x.id}}</code></td>
+                        <td>{{x.name}}</td> 
+                        <td>{{x.level}}</td>
+
+                        <td  class="text-right">{{x.leftBv |number}}</td>
+                        <td class="text-right">{{x.rightBv |number}}</td> 
+
+                        <td  class="text-right">{{x.pairs |number}}</td> 
+                        <td>{{x.reward}}</td> 
+                        <td>{{x.prize}}</td>   
+                        
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</div>
+ 

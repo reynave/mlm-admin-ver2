@@ -1,0 +1,58 @@
+<app-header></app-header>
+
+<div class="container my-3">
+    <div class="row">
+     
+        <div class="col-12 mb-3">
+
+            <div class="mb-2">
+                <strong>Notification</strong>
+            </div>
+
+
+            <div class=" p-3 rounded bg-light ">
+                <div class="row ">
+                   
+                    <div class="col">
+                        <div class="border p-2 rounded shadow-sm alert-warning text-center" [routerLink]="[ '/withdraw' ]">
+                            <b class="display-6"> Withdraw (WD)</b>
+                            <h1>{{items.withdraw}}</h1>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="border p-2 rounded shadow-sm alert-primary text-center" [routerLink]="[ '/topup' ]">
+                           <b class="display-6"> Top Up </b>
+                           <h1>{{items.topup}}</h1>
+                        </div>
+                     </div>
+                     <div class="col">
+                        <div class="border p-2 rounded shadow-sm alert-success text-center" [routerLink]="[ '/renewal' ]">
+                            <b class="display-6"> Renewal Membership</b>
+                            <h1>{{items.renewal}}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          
+               <div class="mt-3">
+                <strong>Sistem information</strong>
+                <table class="table-sm table-bordered mt-2">
+                    <tr>
+                        <td>User</td>
+                        <td>{{items.user | number}} records</td>
+                    </tr>
+                    <tr>
+                        <td>General Transaction</td>
+                        <td>{{items.transaction | number}} records</td>
+                    </tr>
+                   
+                </table>
+             
+               </div>
+        </div>
+         
+
+        
+    </div>
+</div>

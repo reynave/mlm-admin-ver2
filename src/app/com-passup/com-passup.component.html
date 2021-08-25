@@ -1,0 +1,60 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<app-header></app-header>
+ 
+
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12 mb-3">
+            <h1 class="display-6">Commision Pass Up 12 Month</h1> 
+        </div>
+ 
+        <div class="col-12 my-2"> 
+            <div class="">
+                <table id="dataTables" class="display excel border" style="width:100%">
+                    <thead>
+                        <tr>
+                           
+                            <th>Date</th>
+                            <th>Trans.Code</th>
+                            <th>Grand Parent*</th>  
+                            <th>Direct Sponsor</th> 
+                            <th>New Member</th> 
+                            
+    
+                            <th>level</th>  
+                            <th style="text-align: right;">Amount</th>
+                            <th style="text-align: right;">Avaiable</th>
+                              
+                       
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let x of items">
+                            
+                          
+                            <td> {{x.input_date | date:'medium'}}</td>
+                            <td><code>{{x.transactionCode}}</code></td>  
+                            <td> 
+                                <a href="javascript:;" (click)="onParent(x.parentId)" >{{x.parent}} 
+                                    <small class="text-uppercase">({{x.parentId_ebook}})</small></a>
+                            </td>  
+                            <td>{{x.child}}   <small class="text-uppercase">({{x.childId_ebook}})</small>  </td>  
+                            <td>{{x.sponsor}}  <small class="text-uppercase">({{x.sponsorId_ebook}})</small>  </td>    
+                         
+                            <td>{{x.level}}</td>  
+                            <td style="text-align: right;">Rp {{x.amount | number}}</td>
+                            <td style="text-align: right;">Rp {{x.passupAvaiable | number    }}</td>
+                           
+                        </tr>
+    
+                    </tbody>
+    
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+ 

@@ -1,0 +1,129 @@
+<app-header></app-header>
+
+<div class="bg-light border-bottom shadow-sm mb-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 py-1">
+                <a href="javascript:;" class="mr-3"><b>Reward</b></a>
+            
+                <a href="javascript:;" (click)="open(moddalHistory);" class="mr-3"> History Reward </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid">
+    <div class="row my-3">
+        <div class="col-8 mb-2">
+            <h1 class="display-6 ">Rewards in 1 Period <b> {{reward.reward_start | date}} -  {{reward.reward_end | date }}  </b> </h1>
+
+            
+            <div class="my-2 alert-info p-2 shadow-sm rounded-sm" [hidden]="!showUpdate">
+                <table width="100%">
+                    <Tr>
+                        <td class="text-right">Start Date : </td>
+                        <td><input type="date" class="form-control form-control-sm" [(ngModel)]="reward.reward_start">  </td>
+                        <td class="text-center"> - </td>
+                        <td  class="text-right">End Date : </td>
+                        <td><input type="date" class="form-control form-control-sm" [(ngModel)]="reward.reward_end">  </td>
+                        <td> 
+                            <button type="button" class="btn btn-sm btn-secondary mx-1"  (click)="showUpdate = false">Cancel</button> 
+                            <button type="button" class="btn btn-sm btn-warning mx-1" (click)="onUpdate();">Update</button>  
+                        </td>
+                    </Tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-4 mb-2 text-right">
+            <button type="button" class="btn btn-sm btn-warning mx-2" [hidden]="showUpdate" (click)="showUpdate = true" >Update Period</button>
+            <button type="button" class="btn btn-sm btn-success " (click)="onCreateHistory();" >Create Period History</button>
+           
+        </div>
+       
+      
+
+
+        <div class="col-12">
+       
+            <table id="example" class="display excel border" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>ID</th>
+                        <th>Name</th> 
+                        <th>level</th> 
+
+                        <th  class="text-right">Left Bv</th> 
+                        <th  class="text-right">Right Bv</th>
+
+                        <th  class="text-right">Total Pairs</th> 
+                        <th>Reward</th> 
+                        <th>Prize</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of items; let i = index">
+                        <td>{{i+1}}</td>
+                        <td><code>{{x.id}}</code></td>
+                        <td>{{x.name}}</td> 
+                        <td>{{x.level}}</td>
+
+                        <td  class="text-right">{{x.leftBv |number}}</td>
+                        <td class="text-right">{{x.rightBv |number}}</td> 
+
+                        <td  class="text-right">{{x.pairs |number}}</td> 
+                        <td>{{x.reward}}</td> 
+                        <td>{{x.prize}}</td> 
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</div>
+ 
+
+<ng-template #moddalHistory let-modal>
+    <div class="modal-header">
+      <strong class="modal-title" id="modal-basic-title">Select Period</strong>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <table class="table table-sm table-striped">
+            <thead>
+                <tr>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th class="text-right">Total User</th>
+                    <th>Unique ID</th> 
+                    <th>Created Date</th> 
+                    
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let x of history">
+                    <td>{{x.reward_start | date}}</td>
+                    <td> {{x.reward_end | date}}</td>
+                    <td class="text-right">{{x.user}} </td>
+
+                    <td><code>{{x.uniqid}}</code> </td>
+                    <td> {{x.input_date | date:'short'}}</td>
+                    <td>  
+                        <a [routerLink]="[ '/comReward/history', x.uniqid ]" (click)="modal.close('Save click')">Detail</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Closed</button>
+    </div>
+  </ng-template>
