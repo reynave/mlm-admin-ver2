@@ -33,6 +33,7 @@ export class AccountTradingComponent implements OnInit {
         this.items =  data;
         $(document).ready(function () {
           $('#example').DataTable({
+            ordering: false,
             lengthMenu: [  50, 100, 200, 500],
           });
         });

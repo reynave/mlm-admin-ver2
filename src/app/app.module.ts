@@ -48,6 +48,7 @@ import { ComRewardHistoryComponent } from './com-reward/com-reward-history/com-r
 import { RenewalComponent } from './renewal/renewal.component';
 import { MembershipComponent } from './membership/membership.component'; 
 import { AdminComponent } from './admin/admin.component';
+import { VerivedComponent } from './verived/verived.component';
 
 
 
@@ -101,7 +102,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     ComRewardHistoryComponent,
     RenewalComponent,
     MembershipComponent, 
-    AdminComponent
+    AdminComponent, VerivedComponent
   ],
   imports: [
     BrowserModule,

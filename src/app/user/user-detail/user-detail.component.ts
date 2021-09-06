@@ -16,7 +16,7 @@ export class UserDetailComponent implements OnInit {
   user: any = [];
   upload: string = environment.uploadUser;
   saldo: any = [];
-  account_trading: any = [];
+  account_trading: any = false;
   pairing: any = [];
   bonus: any = [];
   disable: boolean = true;
@@ -30,6 +30,8 @@ export class UserDetailComponent implements OnInit {
   id: string;
   renewal : any = [];
   comPairingTotal: any = [];
+  attachment : any = [];
+  uploadUser : string = environment.uploadUser;
   constructor(
 
     private http: HttpClient,
@@ -65,7 +67,7 @@ export class UserDetailComponent implements OnInit {
         this.comPassup = data['comPassup'];
         this.comPairingAk = data['comPairingAk'];
         this.comPairingTotal = data['comPairingTotal'];
-
+        this.attachment = data['attachment'];
         console.log(data['comPairingTotal']);
 
         $(document).ready(function () {

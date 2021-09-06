@@ -12,7 +12,12 @@
 
             <div class=" p-3 rounded bg-light ">
                 <div class="row ">
-                   
+                    <div class="col">
+                        <div class="border p-2 rounded shadow-sm alert-info text-center" [routerLink]="[ '/verived/' ]">
+                            <b class="display-6"> Verified User</b>
+                            <h1>{{items.verified}}</h1>
+                        </div>
+                    </div>
                     <div class="col">
                         <div class="border p-2 rounded shadow-sm alert-warning text-center" [routerLink]="[ '/withdraw' ]">
                             <b class="display-6"> Withdraw (WD)</b>

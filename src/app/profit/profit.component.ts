@@ -19,6 +19,7 @@ export class ProfitComponent implements OnInit {
   amount: string;
   user: any = [];
   currency: string;
+  modalUpload : boolean = false;
   fileTemplate: string = environment.api + 'public/template/Kitaro21-profit-template-ver1.xlsx';
   constructor(
     private router: Router,
@@ -49,6 +50,11 @@ export class ProfitComponent implements OnInit {
             lengthMenu: [50, 100, 200, 500],
             ordering: false
           });
+
+          $('#upld').DataTable({
+            lengthMenu: [50, 100, 200, 500],
+            ordering: false
+          });
         });
       },
       error => {
@@ -60,6 +66,9 @@ export class ProfitComponent implements OnInit {
   uploadReady: boolean = false;
   open(content) {
     this.modalService.open(content, { size: 'xl' });
+  }
+  modal(){
+
   }
 
   updateEditable(obj) {
@@ -129,7 +138,7 @@ export class ProfitComponent implements OnInit {
 
 
   onRemove(x) {
-    if (confirm("Delete this bacth ?")) { 
+    if (confirm("Delete this batch ?")) { 
       this.loading = true;
       this.http.post<any>(environment.api + "profit/onRemove", x, {
         headers: this.configService.headers()
@@ -146,5 +155,23 @@ export class ProfitComponent implements OnInit {
     }
   }
 
+
+  onApproved(x){
+    if (confirm("Approved this batch ?")) { 
+      this.loading = true;
+      this.http.post<any>(environment.api + "profit/onApproved", x, {
+        headers: this.configService.headers()
+      }).subscribe(
+        data => {
+          window.location.reload();
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        },
+
+      );
+    }
+  }
 
 }

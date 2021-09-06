@@ -38,6 +38,7 @@ import { ComRewardHistoryComponent } from './com-reward/com-reward-history/com-r
 import { RenewalComponent } from './renewal/renewal.component';
 import { MembershipComponent } from './membership/membership.component';
 import { AdminComponent } from './admin/admin.component';
+import { VerivedComponent } from './verived/verived.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent, data: { active: "" } },
@@ -93,7 +94,8 @@ const routes: Routes = [
   { path: "membership", component: MembershipComponent, data: { active: "user" }, canActivate: [AuthGuard] },
   { path: "admin", component: AdminComponent, data: { active: "user" }, canActivate: [AuthGuard] },
   
-
+  { path: "verived", component: VerivedComponent, data: { active: "user" }, canActivate: [AuthGuard] },
+ 
 
   { path: "comSponsor", component: ComSponsorComponent, data: { active: "com" }, canActivate: [AuthGuard] },
   { path: "comPassup", component: ComPassupComponent, data: { active: "com" }, canActivate: [AuthGuard] },

@@ -38,7 +38,7 @@
                             <td>Name</td>
                             <td>:</td>
                             <td>
-                                <input type="text" [(ngModel)]="user.name"   [readonly]="disable" [disabled]="disable">
+                                <input type="text" [(ngModel)]="user.name" [readonly]="disable" [disabled]="disable">
                             </td>
                         </tr>
                         <tr>
@@ -52,7 +52,7 @@
                             <td>
                                 <div class="row no-gutters">
                                     <div class="col-6">
-                                        <select name="countryCode" [(ngModel)]="user.code"   class="border">
+                                        <select name="countryCode" [disabled]="disable" [(ngModel)]="user.code" class="border">
                                             <option data-countryCode="ID" value="62" selected>Indonesia (+62)</option>
                                             <option data-countryCode="US" value="1">USA (+1)</option>
                                             <optgroup label="Other countries">
@@ -242,7 +242,7 @@
                                         </select>
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" [(ngModel)]="user.phone"  [readonly]="disable" [disabled]="disable">
+                                        <input type="text" [(ngModel)]="user.phone" [readonly]="disable" [disabled]="disable">
                                     </div>
                                 </div>
                             </td>
@@ -250,13 +250,13 @@
                         <tr>
                             <td>Address</td>
                             <td>:</td>
-                            <td> <input type="text" [(ngModel)]="user.address"   class="mb-2" [readonly]="disable" [disabled]="disable">
+                            <td> <input type="text" [(ngModel)]="user.address" class="mb-2" [readonly]="disable" [disabled]="disable">
                                 <div class="row">
                                     <div class="col">
-                                        <input type="text" [(ngModel)]="user.city"   [readonly]="disable" [disabled]="disable">
+                                        <input type="text" [(ngModel)]="user.city" [readonly]="disable" [disabled]="disable">
                                     </div>
                                     <div class="col">
-                                        <input type="number" [(ngModel)]="user.postal_code"   [readonly]="disable" [disabled]="disable">
+                                        <input type="number" [(ngModel)]="user.postal_code" [readonly]="disable" [disabled]="disable">
                                     </div>
                                 </div>
                             </td>
@@ -264,36 +264,54 @@
                         <tr>
                             <td>ID Card</td>
                             <td>:</td>
-                            <td> <input type="number" [(ngModel)]="user.ktp"   [readonly]="disable" [disabled]="disable"> </td>
+                            <td> <input type="number" [(ngModel)]="user.ktp" [readonly]="disable" [disabled]="disable">
+
+                                <div class="mt-1">
+                                    <small>URL : {{uploadUser}}{{attachment.url}}</small>
+                                    <img src="{{uploadUser}}{{attachment.url}}" width="100%">
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <td>TAX</td>
                             <td>:</td>
-                            <td> <input type="number" [(ngModel)]="user.npwp"   [readonly]="disable" [disabled]="disable"> </td>
+                            <td> <input type="number" [(ngModel)]="user.npwp" [readonly]="disable" [disabled]="disable"> </td>
                         </tr>
 
                         <tr>
                             <td>Joined Date</td>
                             <td>:</td>
-                            <td> <input type="date" [(ngModel)]="user.register_date"  [readonly]="disable" [disabled]="disable"> </td>
+                            <td> <input type="date" [(ngModel)]="user.register_date" [readonly]="disable" [disabled]="disable"> </td>
                         </tr>
 
                         <tr>
                             <td>Upgrade Ebook Expired</td>
                             <td>:</td>
-                            <td> 
-                                <input type="date" [(ngModel)]="user.upgrade_expired"  [readonly]="disable" [disabled]="disable">
-                                  </td>
+                            <td>
+                                <input type="date" [(ngModel)]="user.upgrade_expired" [readonly]="disable" [disabled]="disable">
+                            </td>
                         </tr>
 
                         <tr>
                             <td>Expired Membership</td>
                             <td>:</td>
                             <td>
-                                <input type="date" [(ngModel)]="user.expires_date"  [readonly]="disable" [disabled]="disable">
+                                <input type="date"  [(ngModel)]="user.expires_date" [readonly]="disable" [disabled]="disable">
                             </td>
                         </tr>
-                      
+
+
+                        <tr>
+                            <td><b> Verified</b></td>
+                            <td>:</td>
+                            <td>
+                                <select class="" [disabled]="disable" [(ngModel)]="user.verified">
+                                    <option value="0"> Non Verify</option>
+                                    <option value="1"> Submit and waiting Approved</option>
+                                    <option value="100"> Verified</option> 
+                                </select> 
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -306,7 +324,7 @@
                             <td width="30%">Bank Name</td>
                             <td width="1%">:</td>
                             <td>
-                                <input type="text" [(ngModel)]="user.bank"   [readonly]="disable" [disabled]="disable">
+                                <input type="text" [(ngModel)]="user.bank" [readonly]="disable" [disabled]="disable">
                             </td>
                         </tr>
                         <tr>
@@ -317,7 +335,7 @@
                         <tr>
                             <td>Bank Acc Number</td>
                             <td width="1%">:</td>
-                            <td> <input type="text" [(ngModel)]="user.bank_number"   [readonly]="disable" [disabled]="disable"> </td>
+                            <td> <input type="text" [(ngModel)]="user.bank_number" [readonly]="disable" [disabled]="disable"> </td>
                         </tr>
 
                         <!-- <tr>
@@ -338,23 +356,23 @@
                             <td width="30%"> Name</td>
                             <td width="1%">:</td>
                             <td>
-                                <input type="text" [(ngModel)]="user.heir_name"   [readonly]="disable" [disabled]="disable">
+                                <input type="text" [(ngModel)]="user.heir_name" [readonly]="disable" [disabled]="disable">
                             </td>
                         </tr>
                         <tr>
                             <td>Email</td>
                             <td>:</td>
-                            <td> <input type="text" [(ngModel)]="user.heir_email"   [readonly]="disable" [disabled]="disable"></td>
+                            <td> <input type="text" [(ngModel)]="user.heir_email" [readonly]="disable" [disabled]="disable"></td>
                         </tr>
                         <tr>
                             <td>Relation</td>
                             <td>:</td>
-                            <td> <input type="text" [(ngModel)]="user.heir_relation"  [readonly]="disable" [disabled]="disable"></td>
+                            <td> <input type="text" [(ngModel)]="user.heir_relation" [readonly]="disable" [disabled]="disable"></td>
                         </tr>
                         <tr>
                             <td>Phone</td>
                             <td>:</td>
-                            <td> <input type="text" [(ngModel)]="user.heir_phone"   [readonly]="disable" [disabled]="disable"></td>
+                            <td> <input type="text" [(ngModel)]="user.heir_phone" [readonly]="disable" [disabled]="disable"></td>
                         </tr>
 
                     </tbody>
@@ -410,7 +428,7 @@
 
 
             <div class="border p-1 mb-3 bgn">
-                <strong>Ebook & Account Trading</strong>
+                <strong>Ebook <span [hidden]="!account_trading"> & Account Trading</span></strong>
                 <table class="table table-sm">
                     <tbody>
                         <tr>
@@ -418,17 +436,17 @@
                             <td width="1%">:</td>
                             <td> <b>{{account_trading.ebook}}</b></td>
                         </tr>
-                        <tr>
+                        <tr [hidden]="!account_trading">
                             <td>Account</td>
                             <td width="1%">:</td>
                             <td> {{account_trading.account}}</td>
                         </tr>
-                        <tr>
+                        <tr [hidden]="!account_trading">
                             <td>password</td>
                             <td width="1%">:</td>
                             <td><code> {{account_trading.password}}</code></td>
                         </tr>
-                        <tr>
+                        <tr [hidden]="!account_trading">
                             <td>server</td>
                             <td width="1%">:</td>
                             <td> {{account_trading.server}}</td>
@@ -463,13 +481,13 @@
                         </tr>
                         <tr>
                             <td>Reward </td>
-                            <td class="text-right">Rp {{bonus.reward | number}}</td> 
-                        </tr> 
+                            <td class="text-right">Rp {{bonus.reward | number}}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
 
-            <div class="border p-1 mb-3 alert-info" >
+            <div class="border p-1 mb-3 alert-info">
                 <strong>Membership Renewal Payment</strong>
                 <table class="table table-sm">
                     <tbody>
@@ -479,8 +497,8 @@
                             <td>{{x.bank_number}}</td>
                             <td>{{x.transactionCode}}</td>
                         </tr>
-    
-                    </tbody>    
+
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -557,7 +575,7 @@
                             </td>
                         </tr>
                         <tr [hidden]="!comBalanceEnable">
-                            <td colspan="4">  <small><em>Warning! this process will effect the wallet.</em></small> </td>
+                            <td colspan="4"> <small><em>Warning! this process will effect the wallet.</em></small> </td>
                             <td colspan="5" class="text-right">
                                 <a href="javascript:;" (click)="onSubmitComSponsor();" class="btn btn-sm btn-warning"><small>Submit</small></a>
                             </td>
@@ -728,7 +746,7 @@
                         </tr>
                         <tr [hidden]="!comBalanceEnable">
                             <td colspan="6">
-                               
+
                             </td>
 
                             <td class="text-right">
@@ -749,7 +767,7 @@
 
                 </table>
             </div>
- 
+
             <div class="border p-2 bg-light" [hidden]="active != '5'">
                 <strong>Paid Pairing</strong>
                 <table id="example4" class="display excel bg-white border" style="width:100%">
@@ -802,7 +820,7 @@
                             </td>
                         </tr>
                         <tr [hidden]="!comBalanceEnable">
-                            <td colspan="5">  <small><em>Warning! this process will effect the wallet.</em></small> </td>
+                            <td colspan="5"> <small><em>Warning! this process will effect the wallet.</em></small> </td>
                             <td colspan="2" class="text-right">
                                 <a href="javascript:;" (click)="onSubmitComPairingTotal();" class="btn btn-sm btn-warning"><small>Submit</small></a>
                             </td>

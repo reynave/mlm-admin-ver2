@@ -42,10 +42,8 @@
                         <td>{{x.tree}}</td>
                         <td>{{x.expires_date | date}}</td>
 
-                        <td>{{x.verified == '100' ? 'Verified' : 'Pending' }}</td>
-                        <td>
-
-
+                        <td>{{x.verified == '100' ? 'Verified' : '' }} </td>
+                        <td> 
                             <a [routerLink]="[ '/user/', x.id]" class="btn btn-sm btn-primary mx-1 py-0">Detail</a>
                             <a (click)="access(x);"  class="btn btn-sm btn-warning mx-1  py-0">Member</a>
                             <a (click)="kitaro(x);" [hidden]="!asAccess.kitaro" class="btn btn-sm btn-dark mx-1  py-0">Kitaro21</a>
